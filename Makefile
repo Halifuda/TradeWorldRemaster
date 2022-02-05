@@ -4,10 +4,11 @@ CC = g++
 ENCODE = GBK # 编码方式，MS-DOS下使用GBK
 CFLAG = -Wall -m64 -O2 -std=c++17 -fexec-charset=$(ENCODE)
 INC = -I./h # 包含文件
-OBJ = ./obj/
-SRC = ./src/
+OBJ = .\obj\\
 
-all:clean obj init debug
+SRC = .\src\\
+
+all:obj init debug
 
 obj:cities.o saveload.o
 
@@ -18,12 +19,11 @@ debug:mapdebug
 clean:cleanexe cleanobj
 
 cleanexe:
-	del /f *.exe
+	del *.exe
 
 cleanobj:
-	cd $(OBJ)
-	del /f *.o
-	cd ..
+	
+	del $(OBJ)*.o
 
 mapinit:
 	$(CC) $(CFLAG) $(INC) ./initial/mapinit.cpp\
